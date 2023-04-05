@@ -476,629 +476,78 @@ onEvent('block.registry', event => {
 	 
 
 
-	 
-	 
-	 
-onEvent('item.tooltip', e => {
+   onEvent('item.tooltip', e => {
+    const tooltips = [
+      { item: 'tconstruct:smeltery_controller', tooltip: 'Disabled, use a foundry in chapter 3.' },
 
-  e.addAdvanced('tconstruct:smeltery_controller', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
+      { item: 'create:blaze_cake', tooltip: 'No longer superheats! Use processes in Chapter 4 to superheat blaze burners. (Fuel Bucket, regular blaze burner)' },
+      { item: 'tconstruct:raw_cobalt', tooltip: 'Gated by reaching the Moon!.' },
+      { item: 'ae2:certus_quartz_dust', tooltip: 'Gated by reaching the Moon!' },
+      { item: 'minecraft:blaze_rod', tooltip: 'Blazes can be found in a certain structure on the Moon...' },
+      { item: 'minecraft:rotten_flesh', tooltip: 'Chewy... might make a good source of leather?' },
+      { item: 'computercraft:disk', tooltip: 'This recipe is wierd it actually uses redstone, not rose quartz.' },
+      { item: 'createastral:bronze_block', tooltip: 'Texture courtesy of Create: Alloyed!' },
+      { item: 'extractinator:extractinator', tooltip: 'Purely decorative. No functional use.' },
+      { item: 'ad_astra:space_helmet', tooltip: 'Can be repaired using Sturdy Sheets.' },
+      { item: 'ad_astra:space_suit', tooltip: 'Can be repaired using Sturdy Sheets.' },
+      { item: 'ad_astra:space_pants', tooltip: 'Can be repaired using Sturdy Sheets.' },
+      { item: 'ad_astra:space_boots', tooltip: 'Can be repaired using Sturdy Sheets.' },
+      { item: 'minecraft:obsidian', tooltip: 'Nether is Disabled. Nether content is distributed across planets. Follow the questbook for more info.' },
+      { item: 'minecraft:flint_and_steel', tooltip: 'Nether is Disabled. Nether content is distributed across planets. Follow the questbook for more info.' },
+      { item: 'create:empty_blaze_burner', tooltip: 'Blazes are found on the moon.' },
+      { item: 'create:blaze_burner', tooltip: 'Blazes are found on the moon.' },
+      { item: 'techreborn:basic_machine_casing', tooltip: 'Crafted with either silver OR lead!' },
+      { item: 'minecraft:nether_wart', tooltip: 'Found underground on the moon.' },
+      { item: 'minecraft:soul_sand', tooltip: 'Found underground on the moon.' },
+      { item: 'ae2:certus_quartz', tooltip: 'Found underground on the moon.' },
+      { item: 'minecraft:ancient_debris', tooltip: 'Found underground on the moon and mars. Can be obtained from bastions and infernal spires on mars.' },
+      { item: 'techreborn:uu_matter', tooltip: 'Material forged in chapter 5.' }, 
+      { item: 'create:mechanical_arm', tooltip: 'Use a hopper to place this in a mechanical crafter.' } ,
+
+
+      { item: 'techreborn:silver_ingot', tooltip: 'This metal is found on the moon. Y=65' },
+      { item: 'techreborn:silver_nugget', tooltip: 'This metal is found on the moon. Y=65' },
+      { item: 'techreborn:silver_storage_block', tooltip: 'This metal is found on the moon. Y=65' },
+      { item: 'techreborn:raw_silver', tooltip: 'This metal is found on the moon. Y=65' },
+      { item: 'techreborn:silver_ingot', tooltip: 'This metal is found on the moon. Y=65' },
+      { item: 'techreborn:silver_ore', tooltip: 'This metal is found on the moon. Y=65' },
+      { item: 'techreborn:deepslate_silver_ore', tooltip: 'This metal is found on the moon. Y=65' },
+
+      { item: 'techreborn:lead_ingot', tooltip: 'This metal is found on mars. Y=50' },
+      { item: 'techreborn:lead_nugget', tooltip: 'This metal is found on mars. Y=50' },
+      { item: 'techreborn:lead_storage_block', tooltip: 'This metal is found on mars. Y=50' },
+      { item: 'techreborn:raw_lead', tooltip: 'This metal is found on mars. Y=50' },
+      { item: 'techreborn:lead_ingot', tooltip: 'This metal is found on mars. Y=50' },
+      { item: 'techreborn:lead_ore', tooltip: 'This metal is found on mars. Y=50' },
+      { item: 'techreborn:deepslate_lead_ore', tooltip: 'This metal is found on mars. Y=50' },
+
       
-      text.add(1, [Text.of('Disabled, use a foundry in chapter 3.').red(),])
-      
-    }
-  })
-  e.addAdvanced('techreborn:lead_ingot', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('This metal is gated behind reaching Mars!').gold(),])
-      
-    }
-  })
-    e.addAdvanced('create:blaze_cake', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('No longer superheats! Use a fuel bucket in Chapter 4 to superheat blaze burners.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('techreborn:iridium_ingot', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Gated by reaching Mercury! (Chapter 5)').gold(),])
-      
-    }
-  })
-  e.addAdvanced('tconstruct:raw_cobalt', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Gated by reaching the Moon!.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('ae2:certus_quartz_dust', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Gated by reaching the Moon!').gold(),])
-      
-    }
-  })
-  e.addAdvanced('techreborn:silver_ingot', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Gated by reaching the Moon!').gold(),])
-      
-    }
-  })
-  e.addAdvanced('minecraft:blaze_rod', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Blazes can be found in a certain structure on the Moon...').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:steel_chestplate', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Heavy and durable, a solid alternative to diamond.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:steel_boots', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Heavy and durable, a solid alternative to diamond.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:steel_helmet', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Heavy and durable, a solid alternative to diamond.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:steel_leggings', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Heavy and durable, a solid alternative to diamond.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:sturdy_chestplate', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Extreme durability and provides high protection versus attacks of great damage. Poorly conductive and does not resonate in enchanting tables.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:sturdy_boots', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Extreme durability and provides high protection versus attacks of great damage. Poorly conductive and does not resonate in enchanting tables.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:sturdy_helmet', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Extreme durability and provides high protection versus attacks of great damage. Poorly conductive and does not resonate in enchanting tables.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:sturdy_leggings', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Extreme durability and provides high protection versus attacks of great damage. Poorly conductive and does not resonate in enchanting tables.').gold(),])
-      
-    }
-  })
+
+
+    ];
   
-  e.addAdvanced('createastral:brass_chestplate', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Efficient to produce, particularly effective in enchanting tables.').gold(),])
-      
-    }
-  })
-    e.addAdvanced('createastral:brass_helmet', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Efficient to produce, particularly effective in enchanting tables.').gold(),])
-      
-    }
-  })
-    e.addAdvanced('createastral:brass_leggings', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Efficient to produce, particularly effective in enchanting tables.').gold(),])
-      
-    }
-  })
-    e.addAdvanced('createastral:brass_boots', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Efficient to produce, particularly effective in enchanting tables.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:brass_hoe', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Efficient to produce, particularly effective in enchanting tables.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:brass_pickaxe', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Efficient to produce, particularly effective in enchanting tables.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:brass_axe', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Efficient to produce, particularly effective in enchanting tables.').gold(),])
-      
-      
-    }
-  })
-  e.addAdvanced('createastral:brass_shovel', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Efficient to produce, particularly effective in enchanting tables.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:brass_sword', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Efficient to produce, particularly effective in enchanting tables.').gold(),])
-      
-    }
-  })
-    e.addAdvanced('createastral:copper_chestplate', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Easy to craft and requires little processing.').gold(),])
-      
-    }
-  })
-   e.addAdvanced('createastral:copper_helmet', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Easy to craft and requires little processing.').gold(),])
-      
-    }
-  })
-   e.addAdvanced('createastral:copper_boots', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Easy to craft and requires little processing.').gold(),])
-      
-    }
-  })
-   e.addAdvanced('createastral:copper_leggings', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Easy to craft and requires little processing.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:copper_hoe', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Easy to craft and requires little processing.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:copper_shovel', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Easy to craft and requires little processing.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:copper_pickaxe', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Easy to craft and requires little processing.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:copper_axe', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Easy to craft and requires little processing.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:copper_sword', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Easy to craft and requires little processing.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('minecraft:iron_helmet', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Reliable, will require a mechanical press to produce.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('minecraft:iron_chestplate', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Reliable, will require a mechanical press to produce.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('minecraft:iron_leggings', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Reliable, will require a mechanical press to produce.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('minecraft:iron_boots', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Reliable, will require a mechanical press to produce.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('minecraft:iron_sword', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Reliable, will require a mechanical press to produce.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('minecraft:iron_axe', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Reliable, will require a mechanical press to produce.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('minecraft:wooden_axe', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Reliable, will require a mechanical press to produce.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('minecraft:stone_axe', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Reliable, will require a mechanical press to produce.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('minecraft:diamond_axe', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Reliable, will require a mechanical press to produce.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('minecraft:netherite_axe', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Reliable, will require a mechanical press to produce.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('minecraft:golden_axe', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Reliable, will require a mechanical press to produce.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('minecraft:iron_pickaxe', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Reliable, will require a mechanical press to produce.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('minecraft:iron_shovel', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Reliable, will require a mechanical press to produce.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('minecraft:iron_hoe', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Reliable, will require a mechanical press to produce.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('minecraft:rotten_flesh', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Chewy... might make a good source of leather?').gold(),])
-      
-    }
-  })
-  e.addAdvanced('campanion:leather_pouch', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Material item, no functional use.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:orcane', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-	text.add(1, [Text.of('If you are new to create, use pondering or online guides. The pack is almost exclusively centered around it and Tech Reborn. The quest book has some items that give a general idea of what has changed / what is included, in the order of when to take note of them, however the pack can be played without following it exactly, so do what you enjoy.').gold(),])
-	text.add(2, [Text.of('A major change you *might* want to be aware of. The nether does not exist. Do not even try to make the portal as it will not function. All nether related items are distributed throughout the pack (mostly planets)').white(),])
-
-    }
-  })
-
-  e.addAdvanced('createastral:radiant_sword', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('As durable as hard light can be. Extremely enchantable.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:radiant_axe', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('As durable as hard light can be. Extremely enchantable.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:radiant_shovel', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('As durable as hard light can be. Extremely enchantable.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:radiant_pickaxe', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('As durable as hard light can be. Extremely enchantable.').gold(),])
-      
-    }
-  })
-  e.addAdvanced('computercraft:disk', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('This recipe is wierd it actually uses redstone, not rose quartz.').red(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:sturdy_sheet_block', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Texture from Create: Things & Misc!').red(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:copper_heating_coil', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Texture courtesy of UUTex (Gregtech)!').red(),])
-      
-    }
-  })
-  e.addAdvanced('createastral:bronze_block', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Texture courtesy of Create: Alloyed!').red(),])
-      
-    }
-  })
-
-  e.addAdvanced('createastral:andesite_compound', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Texture courtesy of Jamiscus!').white(),])
-      
-    }
-  })
-
-  e.addAdvanced('extractinator:extractinator', (item, advanced, text) => {
-    if (!e.isShift()) {
-      text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
-    }
-    if (e.isShift()) {
-      
-      text.add(1, [Text.of('Purely decorative. No functional use.').white(),])
-      
-    }
-  })
-})
-
+    tooltips.forEach(tooltip => {
+      e.addAdvanced(tooltip.item, (item, advanced, text) => {
+        if (!e.isShift()) {
+          text.add(1, [Text.of('Hold ').darkGreen(), Text.of('Shift ').green(), Text.of('to see more info.').darkGreen()]);
+        }
+        if (e.isShift()) {
+          text.add(1, [Text.of(tooltip.tooltip).green()]);
+        }
+      });
+    });
+    e.addAdvanced('createastral:orcane', (item, advanced, text) => {
+      if (!e.isShift()) {
+        text.add(1, [Text.of('Hold ').gold(), Text.of('Shift ').yellow(), Text.of('to see more info.').gold()])
+      }
+      if (e.isShift()) {
+        
+    text.add(1, [Text.of('If you are new to create, use pondering or online guides. The pack is almost exclusively centered around it and Tech Reborn. The quest book has some items that give a general idea of what has changed / what is included, in the order of when to take note of them, however the pack can be played without following it exactly, so do what you enjoy.').gold(),])
+    text.add(2, [Text.of('A major change you *might* want to be aware of. The nether does not exist. Do not even try to make the portal as it will not function. All nether related items are distributed throughout the pack (mostly planets)').white(),])
+  
+      }
+    })
+  });
   
 
 
