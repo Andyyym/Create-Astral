@@ -135,7 +135,7 @@ function crushingRecipes(event) {
             ],
         },
         {
-            input: "#coral_blocks",
+            input: "#c:coral_blocks",
             outputs: [["techreborn:calcite_dust", 1]],
         },
         //Asurine, Veridiun Crushing
@@ -181,6 +181,108 @@ function crushingRecipes(event) {
                 ["tconstruct:debris_nugget", 0.03],
             ],
         },
+
+
+    // concrete crushing into concrete powder
+
+        {
+            input: "minecraft:white_concrete",
+            outputs: [
+                ["minecraft:white_concrete_powder", 1],
+            ],
+        },
+        {
+            input: "minecraft:orange_concrete",
+            outputs: [
+                ["minecraft:orange_concrete_powder", 1],
+            ],
+        },
+        {
+            input: "minecraft:magenta_concrete",
+            outputs: [
+                ["minecraft:magenta_concrete_powder", 1],
+            ],
+        },
+        {
+            input: "minecraft:light_blue_concrete",
+            outputs: [
+                ["minecraft:light_blue_concrete_powder", 1],
+            ],
+        },
+        {
+            input: "minecraft:yellow_concrete",
+            outputs: [
+                ["minecraft:yellow_concrete_powder", 1],
+            ],
+        },
+        {
+            input: "minecraft:lime_concrete",
+            outputs: [
+                ["minecraft:lime_concrete_powder", 1],
+            ],
+        },
+        {
+            input: "minecraft:pink_concrete",
+            outputs: [
+                ["minecraft:pink_concrete_powder", 1],
+            ],
+        },
+        {
+            input: "minecraft:gray_concrete",
+            outputs: [
+                ["minecraft:gray_concrete_powder", 1],
+            ],
+        },
+        {
+            input: "minecraft:light_gray_concrete",
+            outputs: [
+                ["minecraft:light_gray_concrete_powder", 1],
+            ],
+        },
+        {
+            input: "minecraft:cyan_concrete",
+            outputs: [
+                ["minecraft:cyan_concrete_powder", 1],
+            ],
+        },
+        {
+            input: "minecraft:purple_concrete",
+            outputs: [
+                ["minecraft:purple_concrete_powder", 1],
+            ],
+        },
+        {
+            input: "minecraft:blue_concrete",
+            outputs: [
+                ["minecraft:blue_concrete_powder", 1],
+            ],
+        },
+        {
+            input: "minecraft:brown_concrete",
+            outputs: [
+                ["minecraft:brown_concrete_powder", 1],
+            ],
+        },
+        {
+            input: "minecraft:green_concrete",
+            outputs: [
+                ["minecraft:green_concrete_powder", 1],
+            ],
+        },
+        {
+            input: "minecraft:red_concrete",
+            outputs: [
+                ["minecraft:red_concrete_powder", 1],
+            ],
+        },
+        {
+            input: "minecraft:black_concrete",
+            outputs: [
+                ["minecraft:black_concrete_powder", 1],
+            ],
+        },
+
+
     ].forEach((recipe) => {
         let cleanoutputs = [];
         recipe.outputs.forEach((output) => {
@@ -261,8 +363,20 @@ function crushingRecipes(event) {
             input: "techreborn:" + ore + "_ore",
         });
         event.recipes.createCrushing(
-            ["2x techreborn:raw_" + ore.split("_")[1]],
+            ["2x techreborn:raw_" + ore.replace("deepslate_", "")],
             "techreborn:" + ore + "_ore"
+        );
+    });
+
+     // Crushable raw techreborn storage blocks
+     [
+        "silver",
+        "tin",
+        "lead",
+    ].forEach((ore) => {
+        event.recipes.createCrushing(
+            ["9x create:crushed_" + ore.replace("deepslate_", "") + "_ore", "3x create:experience_nugget"],
+            "techreborn:raw_" + ore + "_storage_block"
         );
     });
 
@@ -1123,11 +1237,11 @@ function mixingRecipes(event) {
             time: 700,
         },
         {
-            output: Item.of('minecraft:enchanted_book', '{StoredEnchantments:[{id:"minecraft:mending",lvl:1s}]}'),
-            input: [
-                "16x minecraft:book",
-                "64x create:experience_nugget",
-            ],
+            output: Item.of(
+                "minecraft:enchanted_book",
+                '{StoredEnchantments:[{id:"minecraft:mending",lvl:1s}]}'
+            ),
+            input: ["16x minecraft:book", "64x create:experience_nugget"],
             heat: "heated",
             time: 700,
         },
@@ -1230,8 +1344,8 @@ function mixingRecipes(event) {
         {
             output: Fluid.of("tconstruct:molten_rose_gold", 9000),
             input: ["minecraft:copper_ingot", "minecraft:gold_ingot"],
-            heat: "",
-            time: 1500,
+            heat: "heated",
+            time: 300,
         },
         {
             output: Fluid.of("tconstruct:molten_bronze", 18000),
@@ -1512,7 +1626,7 @@ function mixingRecipes(event) {
         {
             output: "doodads:asphalt",
             input: [
-                { fluid: "kubejs:andesite_compound", amount: 3000 },
+                { fluid: "kubejs:compound_mixture", amount: 3000 },
                 "#c:concrete_powder",
             ],
             heat: "",
@@ -1561,6 +1675,15 @@ function cuttingRecipes(event) {
         ["techreborn:rubber_log", "techreborn:rubber_log_stripped"],
         ["techreborn:rubber_wood", "techreborn:stripped_rubber_wood"],
         ["techreborn:rubber_log_stripped", "6x techreborn:rubber_planks"],
+        ["techreborn:stripped_rubber_wood", "6x techreborn:rubber_planks"],
+        ["vinery:cherry_log", "vinery:stripped_cherry_log"],
+        ["vinery:cherry_wood", "vinery:stripped_cherry_wood"],
+        ["vinery:stripped_cherry_log", "6x vinery:cherry_planks"],
+        ["vinery:stripped_cherry_wood", "6x vinery:cherry_planks"],
+        ["vinery:old_cherry_log", "vinery:stripped_old_cherry_log"],
+        ["vinery:old_cherry_wood", "vinery:stripped_old_cherry_wood"],
+        ["vinery:stripped_old_cherry_log", "6x vinery:cherry_planks"],
+        ["vinery:stripped_old_cherry_wood", "6x vinery:cherry_planks"],
     ].forEach((recipe) => {
         event.recipes.createCutting(recipe[1], recipe[0]);
     });
@@ -1581,7 +1704,7 @@ function splashingRecipes(event) {
     //Outputs: Array of outputs, which is each an array.
     //    [Item string, float from 0.0 - 1.0 deciding chance]
     [
-        {
+    {
             input: "createaddition:biomass",
             outputs: [
                 ["createastral:pure_biomatter", 1],
@@ -1648,6 +1771,268 @@ function splashingRecipes(event) {
                 ["9x ad_astra:calorite_nugget", 1],
                 ["minecraft:raw_copper", 1],
             ],
+        },    
+
+         /// Oxidization of copper blocks (start)
+         
+        //Vanilla copper blocks
+        {
+            input: "minecraft:copper_block",
+            outputs: [
+                ["minecraft:exposed_copper", 1]
+            ],
+        },
+        {
+            input: "minecraft:exposed_copper",
+            outputs: [
+                ["minecraft:weathered_copper", 1]
+            ],
+        },
+        {
+            input: "minecraft:weathered_copper",
+            outputs: [
+                ["minecraft:oxidized_copper", 1]
+            ],
+        },
+
+        //Vanilla cut copper blocks
+
+        {
+            input: "minecraft:cut_copper",
+            outputs: [
+                ["minecraft:exposed_cut_copper", 1]
+            ],
+        },
+        {
+            input: "minecraft:exposed_cut_copper",
+            outputs: [
+                ["minecraft:weathered_cut_copper", 1]
+            ],
+        },
+        {
+            input: "minecraft:weathered_cut_copper",
+            outputs: [
+                ["minecraft:oxidized_cut_copper", 1]
+            ],
+        },
+
+        //Vanilla cut copper slabs
+
+        {
+            input: "minecraft:cut_copper_slab",
+            outputs: [
+                ["minecraft:exposed_cut_copper_slab", 1]
+            ],
+        },
+        {
+            input: "minecraft:exposed_cut_copper_slab",
+            outputs: [
+                ["minecraft:weathered_cut_copper_slab", 1]
+            ],
+        },
+        {
+            input: "minecraft:weathered_cut_copper_slab",
+            outputs: [
+                ["minecraft:oxidized_cut_copper_slab", 1]
+            ],
+        },
+
+        //Vanilla cut copper stairs
+
+        {
+            input: "minecraft:cut_copper_stairs",
+            outputs: [
+                ["minecraft:exposed_cut_copper_stairs", 1]
+            ],
+        },
+        {
+            input: "minecraft:exposed_cut_copper_stairs",
+            outputs: [
+                ["minecraft:weathered_cut_copper_stairs", 1]
+            ],
+        },
+        {
+            input: "minecraft:weathered_cut_copper_stairs",
+            outputs: [
+                ["minecraft:oxidized_cut_copper_stairs", 1]
+            ],
+        },
+
+        //create mod copper shingles
+	{
+        input: "create:copper_shingles",
+        outputs: [
+            ["create:exposed_copper_shingles", 1]
+        ],
+    },
+    {
+        input: "create:exposed_copper_shingles",
+        outputs: [
+            ["create:weathered_copper_shingles", 1]
+        ],
+    },
+    {
+        input: "create:weathered_copper_shingles",
+        outputs: [
+            ["create:oxidized_copper_shingles", 1]
+        ],
+    },
+
+    //create mod copper shingle slabs
+
+    {
+        input: "create:copper_shingle_slab",
+        outputs: [
+            ["create:exposed_copper_shingle_slab", 1]
+        ],
+    },
+    {
+        input: "create:exposed_copper_shingle_slab",
+        outputs: [
+            ["create:weathered_copper_shingle_slab", 1]
+        ],
+    },
+    {
+        input: "create:weathered_copper_shingle_slab",
+        outputs: [
+            ["create:oxidized_copper_shingle_slab", 1]
+        ],
+    },
+
+    //create copper shingle stairs
+
+    {
+        input: "create:copper_shingle_stairs",
+        outputs: [
+            ["create:exposed_copper_shingle_stairs", 1]
+        ],
+    },
+    {
+        input: "create:exposed_copper_shingle_stairs",
+        outputs: [
+            ["create:weathered_copper_shingle_stairs", 1]
+        ],
+    },
+    {
+        input: "create:weathered_copper_shingle_stairs",
+        outputs: [
+            ["create:oxidized_copper_shingle_stairs", 1]
+        ],
+    },
+
+    //create mod copper tiles
+
+    {
+        input: "create:copper_tiles",
+        outputs: [
+            ["create:exposed_copper_tiles", 1]
+        ],
+    },
+    {
+        input: "create:exposed_copper_tiles",
+        outputs: [
+            ["create:weathered_copper_tiles", 1]
+        ],
+    },
+    {
+        input: "create:weathered_copper_tiles",
+        outputs: [
+            ["create:oxidized_copper_tiles", 1]
+        ],
+    },
+
+    //create mod copper tile slabs
+
+    {
+        input: "create:copper_tile_slab",
+        outputs: [
+            ["create:exposed_copper_tile_slab", 1]
+        ],
+    },
+    {
+        input: "create:exposed_copper_tile_slab",
+        outputs: [
+            ["create:weathered_copper_tile_slab", 1]
+        ],
+    },
+    {
+        input: "create:weathered_copper_tile_slab",
+        outputs: [
+            ["create:oxidized_copper_tile_slab", 1]
+        ],
+    },
+
+    //create mod copper tile stairs
+
+    {
+        input: "create:copper_tile_stairs",
+        outputs: [
+            ["create:exposed_copper_tile_stairs", 1]
+        ],
+    },
+    {
+        input: "create:exposed_copper_tile_stairs",
+        outputs: [
+            ["create:weathered_copper_tile_stairs", 1]
+        ],
+    },
+    {
+        input: "create:weathered_copper_tile_stairs",
+        outputs: [
+            ["create:oxidized_copper_tile_stairs", 1]
+        ],
+    },
+
+    //phonos copper speakers
+
+    {
+        input: "phonos:copper_speaker",
+        outputs: [
+            ["phonos:exposed_copper_speaker", 1]
+        ],
+    },
+    {
+        input: "phonos:exposed_copper_speaker",
+        outputs: [
+            ["phonos:weathered_copper_speaker", 1]
+        ],
+    },
+    {
+        input: "phonos:weathered_copper_speaker",
+        outputs: [
+            ["phonos:oxidized_copper_speaker", 1]
+        ],
+    },
+
+    ///copper oxidization recipes (end)
+        // dustrial decor sheetmetal rework
+
+        {
+            input: "minecraft:iron_ingot",
+            outputs: [
+                ["dustrial_decor:rusty_iron_ingot", 1],
+            ],
+        },
+
+        {
+            input: "minecraft:iron_nugget",
+            outputs: [
+                ["dustrial_decor:rusty_iron_nugget", 1],
+            ],
+        },
+
+        {
+            input: "minecraft:iron_block",
+            outputs: [
+                ["dustrial_decor:rusty_iron_block", 1],
+            ],
+        },
+
+        {
+            input: "dustrial_decor:sheet_metal",
+            outputs: [
+                ["dustrial_decor:rusty_sheet_metal", 1],
+            ],
         },
     ].forEach((recipe) => {
         let cleanoutputs = [];
@@ -1666,6 +2051,52 @@ function mechanicalCraftingRecipes(event) {
     // Shape: Array of rows of inputs based on letters assigned
     // Inputs: Object with letters assigned to input items, to be used in the shape
     [
+        {
+            output: "immersive_aircraft:airship",
+            shape: ["AAAA ", "AAAAA", " G G ", "BEDBC", " BBB "],
+            inputs: {
+                A: "immersive_aircraft:sail",
+                B: "immersive_aircraft:hull",
+                C: "create:propeller",
+                D: "create:precision_mechanism",
+                E: "#create:seats",
+                G: "campanion:rope",
+            },
+        },
+        {
+            output: "immersive_aircraft:quadrocopter",
+            shape: ["CCDCC ", "CCBCC ", "ABEBA ", "CCBCC ", "CCDCC "],
+            inputs: {
+                A: "create:precision_mechanism",
+                B: "immersive_aircraft:hull",
+                C: "create:propeller",
+                D: "createaddition:brass_rod",
+                E: "#create:seats",
+            },
+        },
+        {
+            output: "immersive_aircraft:gyrodyne",
+            shape: [" CCC ", "  D  ", "BGEBA", " BBB "],
+            inputs: {
+                A: "immersive_aircraft:sail",
+                B: "immersive_aircraft:hull",
+                C: "create:propeller",
+                D: "createaddition:brass_rod",
+                E: "#create:seats",
+                G: "create:hand_crank",
+            },
+        },
+        {
+            output: "immersive_aircraft:biplane",
+            shape: ["    AA   ", "    AA   ", " A   BBC ", "BBBBBEDC ", " A   BBC ", "    AA   ", "    AA   ", ],
+            inputs: {
+                A: "immersive_aircraft:sail",
+                B: "immersive_aircraft:hull",
+                C: "create:propeller",
+                D: "create:precision_mechanism",
+                E: "#create:seats",
+            },
+        },
         {
             output: "ad_astra:launch_pad",
             shape: ["BAAAB", "ABABA", "AABAA", "ABABA", "BAAAB"],
@@ -1734,7 +2165,7 @@ function mechanicalCraftingRecipes(event) {
                 B: "create:electron_tube",
                 C: "create:mechanical_press",
                 D: "create:precision_mechanism",
-                E: "techreborn:silver_block",
+                E: "ad_astra:desh_block",
             },
         },
         {
@@ -1822,7 +2253,7 @@ function mechanicalCraftingRecipes(event) {
             shape: ["BDCDB", "BAEAB", "BBEBB"],
             inputs: {
                 A: "create:attribute_filter",
-                B: "ad_astra:steel_plate",
+                B: "ad_astra:ostrum_plate",
                 C: "create:mechanical_mixer",
                 D: "create:precision_mechanism",
                 E: "create:fluid_tank",
@@ -2016,6 +2447,16 @@ function compactingRecipes(event) {
         {
             output: "minecraft:cobbled_deepslate",
             inputs: ["8x minecraft:flint", "minecraft:gravel"],
+        },
+
+        //mushroom block recipes
+        {
+            output: "minecraft:brown_mushroom_block",
+            inputs: ["4x minecraft:brown_mushroom"],
+        },
+        {
+            output: "minecraft:red_mushroom_block",
+            inputs: ["4x minecraft:red_mushroom"],
         },
     ].forEach((recipe) => {
         event.recipes.createCompacting(recipe.output, recipe.inputs);
